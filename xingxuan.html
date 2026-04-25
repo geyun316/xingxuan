@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>一站式本地生活运营专家 | 按效果付费 · 有订单才收费</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --primary-light: #1e293b;
+            --gold: #c9a03a;
+            --gold-light: #d4a853;
+            --gold-bg: #fef9f0;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+            --red: #ef4444;
+            --red-light: #fef2f2;
+            --green: #10b981;
+            --green-light: #d1fae5;
+            --radius-sm: 12px;
+            --radius: 20px;
+            --radius-lg: 28px;
+            --radius-xl: 36px;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+            --shadow: 0 4px 16px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.12), 0 8px 16px rgba(0, 0, 0, 0.06);
+            --shadow-xl: 0 30px 60px rgba(0, 0, 0, 0.18), 0 12px 24px rgba(0, 0, 0, 0.08);
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(180deg, #e8ecf1 0%, #dfe4ea 30%, #eef1f5 60%, #e8ecf1 100%);
+            background-attachment: fixed;
+            padding: 16px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .poster-card {
+            max-width: 1140px;
+            width: 100%;
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+            overflow: hidden;
+            margin: 12px auto;
+            position: relative;
+        }
+
+        /* ========== 顶部信任横幅 ========== */
+        .trust-strip {
+            background: var(--primary);
+            color: #fff;
+            padding: 12px 28px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.08);
+        }
+        .trust-strip .trust-dot {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            white-space: nowrap;
+        }
+        .trust-strip i {
+            color: var(--gold-light);
+            font-size: 1rem;
+        }
+        .trust-strip .divider-dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.35);
+            flex-shrink: 0;
+        }
+
+        /* ========== HERO 区 ========== */
+        .hero {
+            background: linear-gradient(155deg, #0f172a 0%, #1a2740 30%, #162240 60%, #0f172a 100%);
+            color: #fff;
+            padding: 52px 36px 44px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            right: -120px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(201, 160, 58, 0.18) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 22px;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.84rem;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+            white-space: nowrap;
+        }
+        .hero-badge i {
+            color: var(--gold-light);
+        }
+        .hero h1 {
+            font-size: clamp(1.9rem, 4vw, 2.8rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 14px;
+            letter-spacing: -0.4px;
+        }
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+        .hero-guarantee {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(251, 191, 36, 0.15);
+            border: 1px solid rgba(251, 191, 36, 0.4);
+            padding: 12px 26px;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fcd34d;
+            margin-top: 16px;
+            animation: glowPulse 2.5s ease-in-out infinite;
+        }
+        @keyframes glowPulse {
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 0 18px rgba(251, 191, 36, 0);
+            }
+        }
+        .hero-platforms {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 26px;
+            padding-top: 22px;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .hero-platform-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 7px 15px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.85);
+            transition: var(--transition);
+        }
+        .hero-platform-tag:hover {
+            background: rgba(255, 255, 255, 0.18);
+            color: #fff;
+        }
+        .hero-platform-tag i {
+            font-size: 0.95rem;
+        }
+
+        /* ========== 通用区块 ========== */
+        .section {
+            padding: 44px 36px;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+        .section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            background: #eef2ff;
+            padding: 5px 14px;
+            border-radius: 30px;
+        }
+        .section-title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+            letter-spacing: -0.3px;
+        }
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--gray-500);
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .section-alt {
+            background: var(--bg);
+        }
+
+        /* ========== 痛点网格 ========== */
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 12px;
+        }
+        .pain-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 26px 24px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-200);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            cursor: default;
+        }
+        .pain-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--gray-300);
+        }
+        .pain-card .pain-emoji {
+            font-size: 2.6rem;
+            display: block;
+            margin-bottom: 12px;
+        }
+        .pain-card h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 6px;
+        }
+        .pain-card .pain-desc {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            line-height: 1.5;
+            margin-bottom: 14px;
+        }
+        .pain-card .solution-chip {
+            display: inline-block;
+            background: var(--green-light);
+            color: #065f46;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* ========== 服务卡片 ========== */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-top: 12px;
+        }
+        .service-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 28px 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--gray-200);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        .service-card .svc-icon-circle {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            flex-shrink: 0;
+        }
+        .svc-icon-circle.icon-red {
+            background: #fef2f2;
+            color: #ef4444;
+        }
+        .svc-icon-circle.icon-blue {
+            background: #eff6ff;
+            color: #3b82f6;
+        }
+        .svc-icon-circle.icon-amber {
+            background: #fffbeb;
+            color: #f59e0b;
+        }
+        .service-card h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 6px;
+        }
+        .service-card .svc-desc {
+            font-size: 0.88rem;
+            color: var(--gray-500);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+        .service-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .service-tag {
+            background: var(--gray-100);
+            padding: 7px 14px;
+            border-radius: 30px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--gray-700);
+            transition: var(--transition);
+            cursor: default;
+            border: 1px solid transparent;
+        }
+        .service-tag:hover {
+            background: var(--gray-200);
+            border-color: var(--gray-300);
+            color: var(--gray-900);
+        }
+
+        /* ========== 实力区 ========== */
+        .strength-section {
+            background: linear-gradient(180deg, #fef9f0 0%, #fdf6e8 50%, #fef9f0 100%);
+            padding: 44px 36px;
+            text-align: center;
+        }
+        .strength-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 28px;
+        }
+        .strength-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 28px 20px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #f0e6d3;
+            transition: var(--transition);
+        }
+        .strength-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+        .strength-card .str-icon {
+            font-size: 2.6rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .strength-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 4px;
+        }
+        .strength-card p {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+        }
+        .strength-badge-row {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 28px;
+        }
+        .strength-badge {
+            background: var(--primary);
+            color: #fff;
+            padding: 10px 22px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .strength-badge i {
+            color: var(--gold-light);
+        }
+
+        /* ========== 报价区 ========== */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 22px;
+            margin-top: 12px;
+        }
+        .price-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-200);
+            transition: var(--transition);
+        }
+        .price-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+        .price-card-header {
+            background: var(--primary);
+            color: #fff;
+            padding: 18px 22px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .price-card-header i {
+            font-size: 1.3rem;
+            color: var(--gold-light);
+        }
+        .price-card-header h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        .price-card-body {
+            padding: 18px 22px;
+        }
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 11px 0;
+            border-bottom: 1px dashed var(--gray-200);
+            font-size: 0.9rem;
+        }
+        .price-row:last-child {
+            border-bottom: none;
+        }
+        .price-row .item-name {
+            color: var(--gray-700);
+            font-weight: 500;
+        }
+        .price-row .item-price {
+            font-weight: 700;
+            color: #1e40af;
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: 0.95rem;
+            background: #eff6ff;
+            padding: 3px 10px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .price-note {
+            font-size: 0.78rem;
+            color: var(--gray-400);
+            margin-top: 12px;
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* ========== CTA咨询入口区 ========== */
+        .cta-section {
+            background: linear-gradient(160deg, #0f172a 0%, #1a2740 50%, #0f172a 100%);
+            padding: 48px 36px;
+            color: #fff;
+            text-align: center;
+        }
+        .cta-section .cta-title {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        .cta-section .cta-subtitle {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 32px;
+        }
+
+        /* 联系人详情卡片 */
+        .contact-detail-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: var(--radius-lg);
+            padding: 30px 28px;
+            max-width: 500px;
+            margin: 0 auto 20px;
+            display: none;
+            animation: fadeSlideIn 0.4s ease;
+        }
+        .contact-detail-card.active {
+            display: block;
+        }
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .contact-detail-card .contact-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin: 0 auto 14px;
+        }
+        .contact-detail-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: #fff;
+        }
+        .contact-detail-card .contact-role {
+            font-size: 0.85rem;
+            color: var(--gold-light);
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+        .contact-detail-card .contact-info-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px 0;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.85);
+            flex-wrap: wrap;
+        }
+        .contact-detail-card .contact-info-row i {
+            color: var(--gold-light);
+            width: 20px;
+            text-align: center;
+        }
+        .contact-detail-card .contact-info-row .copy-btn {
+            background: rgba(255, 255, 255, 0.12);
+            border: none;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 14px;
+            cursor: pointer;
+            font-size: 0.78rem;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .contact-detail-card .contact-info-row .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+        .qrcode-img {
+            display: block;
+            margin: 16px auto 0;
+            width: 140px;
+            height: 140px;
+            border-radius: 12px;
+            background: #fff;
+            object-fit: contain;
+        }
+
+        /* 快捷按钮 */
+        .cta-quick-btns {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+        .btn-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            border: none;
+        }
+        .btn-cta-gold {
+            background: var(--gold);
+            color: #0f172a;
+            box-shadow: 0 6px 20px rgba(201, 160, 58, 0.35);
+        }
+        .btn-cta-gold:hover {
+            background: #b8912e;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(201, 160, 58, 0.5);
+        }
+        .btn-cta-outline {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+        .btn-cta-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #fff;
+            transform: translateY(-3px);
+        }
+
+        /* ========== 底部 ========== */
+        .footer-bar {
+            background: var(--primary);
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            padding: 20px 28px;
+            font-size: 0.78rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+        }
+        .footer-bar span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .footer-bar i {
+            font-size: 0.7rem;
+            color: var(--gold-light);
+        }
+
+        /* ========== Toast提示 ========== */
+        .toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #0f172a;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+        .toast.show {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ========== 响应式 ========== */
+        @media (max-width: 768px) {
+            .section {
+                padding: 28px 18px;
+            }
+            .hero {
+                padding: 36px 18px 32px;
+            }
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .hero-subtitle {
+                font-size: 0.95rem;
+            }
+            .pain-grid {
+                grid-template-columns: 1fr;
+            }
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            .strength-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            .trust-strip {
+                gap: 12px;
+                font-size: 0.75rem;
+                padding: 10px 14px;
+            }
+            .contact-detail-card {
+                padding: 20px 16px;
+            }
+            .btn-cta {
+                padding: 14px 24px;
+                font-size: 0.9rem;
+            }
+            .cta-section {
+                padding: 32px 18px;
+            }
+        }
+        @media (max-width: 480px) {
+            .strength-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+            .hero-badges {
+                gap: 6px;
+            }
+            .hero-badge {
+                padding: 6px 12px;
+                font-size: 0.72rem;
+            }
+            .price-row {
+                font-size: 0.8rem;
+                flex-wrap: wrap;
+                gap: 4px;
+            }
+            .contact-tab {
+                padding: 8px 14px;
+                font-size: 0.78rem;
+            }
+        }
+
+        /* 打印样式 */
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+            }
+            .poster-card {
+                box-shadow: none;
+                border-radius: 0;
+                max-width: 100%;
+            }
+            .contact-tabs,
+            .copy-btn,
+            .btn-cta,
+            .toast {
+                display: none !important;
+            }
+            .contact-detail-card {
+                display: block !important;
+                border: 1px solid #ccc;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Toast提示 -->
+    <div class="toast" id="toast">已复制到剪贴板</div>
+
+    <div class="poster-card">
+        <!-- ==================== 顶部信任条 ==================== -->
+        <div class="trust-strip">
+            <span class="trust-dot"><i class="fas fa-certificate"></i> 抖音·美团官方服务商</span>
+            <span class="divider-dot"></span>
+            <span class="trust-dot"><i class="fas fa-clock"></i> 5年本地生活实战</span>
+            <span class="divider-dot"></span>
+            <span class="trust-dot"><i class="fas fa-store"></i> 服务1000+商家</span>
+            <span class="divider-dot"></span>
+            <span class="trust-dot"><i class="fas fa-shield-check"></i> 按效果付费·零风险</span>
+        </div>
+
+        <!-- ==================== HERO：我们是做什么的 ==================== -->
+        <div class="hero">
+            <div class="hero-content">
+                <div class="hero-badges">
+                    <span class="hero-badge"><i class="fas fa-award"></i> 官方认证服务商</span>
+                    <span class="hero-badge"><i class="fas fa-headset"></i> 全案代运营</span>
+                    <span class="hero-badge"><i class="fas fa-bolt"></i> 快速见效</span>
+                </div>
+                <h1>
+                    一站式<span class="highlight">本地生活运营</span>专家
+                </h1>
+                <p class="hero-subtitle">差评处理 · 数据优化 · 账号运营 · 流量增长 · 全案代运营</p>
+                <p class="hero-subtitle" style="font-size:0.95rem;margin-top:4px;">覆盖休闲娱乐 / 餐饮 / 美业等本地生活全品类</p>
+                <div class="hero-guarantee">
+                    <i class="fas fa-hand-holding-usd"></i> 有客资或订单才收费 · 按效果付费
+                </div>
+                <div class="hero-platforms">
+                    <span class="hero-platform-tag"><i class="fab fa-tiktok"></i> 抖音</span>
+                    <span class="hero-platform-tag"><i class="fas fa-utensils"></i> 美团</span>
+                    <span class="hero-platform-tag"><i class="fas fa-star"></i> 大众点评</span>
+                    <span class="hero-platform-tag"><i class="fab fa-snapchat"></i> 小红书</span>
+                    <span class="hero-platform-tag"><i class="fas fa-map-marker-alt"></i> 高德地图</span>
+                    <span class="hero-platform-tag"><i class="fas fa-hotel"></i> 携程</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== 痛点区：你是否遇到这些问题 ==================== -->
+        <div class="section section-alt">
+            <div class="section-header">
+                <span class="section-label">😰 商家困境</span>
+                <h2 class="section-title">你是否正在经历这些困扰？</h2>
+                <p class="section-subtitle">我们深耕本地生活5年，深知每一位商家面临的真实难题</p>
+            </div>
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <span class="pain-emoji">😰</span>
+                    <h4>差评危机，口碑崩塌</h4>
+                    <p class="pain-desc">一条恶意差评毁掉几个月的心血，评分下滑、客户流失，眼睁睁看着生意被差评拖垮……</p>
+                    <span class="solution-chip">✓ 专业删差评服务</span>
+                </div>
+                <div class="pain-card">
+                    <span class="pain-emoji">📉</span>
+                    <h4>流量枯竭，门可罗雀</h4>
+                    <p class="pain-desc">投了推广没效果，店铺排名垫底，同行生意火爆自己却冷冷清清，不懂平台规则白白烧钱……</p>
+                    <span class="solution-chip">✓ 流量扶持+数据优化</span>
+                </div>
+                <div class="pain-card">
+                    <span class="pain-emoji">⚠️</span>
+                    <h4>违规处罚，束手无策</h4>
+                    <p class="pain-desc">后台突然违规通知，作品被下架、账号被限流，辛苦经营的店铺说没就没，申诉无门……</p>
+                    <span class="solution-chip">✓ 违规申诉+账号恢复</span>
+                </div>
+                <div class="pain-card">
+                    <span class="pain-emoji">🤔</span>
+                    <h4>运营无力，不知从何下手</h4>
+                    <p class="pain-desc">不懂抖音算法、不会美团运营，招人成本高还不专业，想做好线上却毫无头绪……</p>
+                    <span class="solution-chip">✓ 全案代运营服务</span>
+                </div>
+                <div class="pain-card">
+                    <span class="pain-emoji">💸</span>
+                    <h4>怕被坑，不敢轻易尝试</h4>
+                    <p class="pain-desc">找代运营怕先付费没效果，钱打水漂；想要保障又担心服务质量，左右为难……</p>
+                    <span class="solution-chip">✓ 按效果付费·零风险</span>
+                </div>
+                <div class="pain-card">
+                    <span class="pain-emoji">🏆</span>
+                    <h4>竞争激烈，被同行碾压</h4>
+                    <p class="pain-desc">同行数据好看、收藏量好评数远超自己，客户一对比就选了别家，市场份额被蚕食……</p>
+                    <span class="solution-chip">✓ 口碑提升+数据优化</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== 服务区：我们能帮你做什么 ==================== -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-label">🛠️ 核心服务</span>
+                <h2 class="section-title">三大核心板块 · 全方位解决方案</h2>
+                <p class="section-subtitle">5年经验沉淀，专注本地生活运营，一站式解决所有线上难题</p>
+            </div>
+            <div class="service-grid">
+                <!-- 差评管理 -->
+                <div class="service-card">
+                    <div class="svc-icon-circle icon-red"><i class="fas fa-shield-alt"></i></div>
+                    <h4>差评管理 · 口碑守护</h4>
+                    <p class="svc-desc">一条差评毁掉几个月口碑？我们帮你快速处理，恢复店铺评分，守护品牌形象。</p>
+                    <div class="service-tags">
+                        <span class="service-tag">美团删差评</span>
+                        <span class="service-tag">抖音删差评</span>
+                        <span class="service-tag">小红书差评</span>
+                        <span class="service-tag">大众删差评</span>
+                        <span class="service-tag">外卖差评删除</span>
+                        <span class="service-tag">携程差评删除</span>
+                        <span class="service-tag">高德差评删除</span>
+                    </div>
+                </div>
+                <!-- 数据优化 -->
+                <div class="service-card">
+                    <div class="svc-icon-circle icon-blue"><i class="fas fa-chart-line"></i></div>
+                    <h4>数据优化 · 流量提升</h4>
+                    <p class="svc-desc">数据好看才有流量！收藏、销量、好评全方位优化，让店铺排名靠前、客户信任加倍。</p>
+                    <div class="service-tags">
+                        <span class="service-tag">抖音改收藏</span>
+                        <span class="service-tag">美团·大众改收藏</span>
+                        <span class="service-tag">美团·大众改销量</span>
+                        <span class="service-tag">美团刷好评</span>
+                        <span class="service-tag">抖音刷好评</span>
+                        <span class="service-tag">小红书好评</span>
+                    </div>
+                </div>
+                <!-- 账号处理 -->
+                <div class="service-card">
+                    <div class="svc-icon-circle icon-amber"><i class="fas fa-tools"></i></div>
+                    <h4>账号处理 · 问题解决</h4>
+                    <p class="svc-desc">违规申诉、账号恢复、平台入驻，专业团队快速响应，不让任何一个问题拖累你的生意。</p>
+                    <div class="service-tags">
+                        <span class="service-tag">抖音美团后台违规</span>
+                        <span class="service-tag">小红书·抖快作品帖下架</span>
+                        <span class="service-tag">上抖音/美团</span>
+                        <span class="service-tag">上蓝V解绑</span>
+                        <span class="service-tag">上高德地图</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== 实力区：为什么选择我们 ==================== -->
+        <div class="strength-section">
+            <div class="section-header">
+                <span class="section-label">💪 我们的实力</span>
+                <h2 class="section-title">为什么选择我们？</h2>
+                <p class="section-subtitle">5年深耕本地生活运营，官方认证服务商，效果有保障</p>
+            </div>
+            <div class="strength-grid">
+                <div class="strength-card">
+                    <span class="str-icon">🏅</span>
+                    <h4>官方认证服务商</h4>
+                    <p>抖音·美团官方合作服务商，资质可查，安全可靠</p>
+                </div>
+                <div class="strength-card">
+                    <span class="str-icon">📅</span>
+                    <h4>5年实战经验</h4>
+                    <p>深耕本地生活5年，休闲娱乐、餐饮、美业等全品类覆盖</p>
+                </div>
+                <div class="strength-card">
+                    <span class="str-icon">🎯</span>
+                    <h4>按效果付费</h4>
+                    <p>有客资或订单才收费，零风险合作，效果说话</p>
+                </div>
+                <div class="strength-card">
+                    <span class="str-icon">⚡</span>
+                    <h4>快速响应</h4>
+                    <p>专业团队高效处理，不拖不等，最快当天见效</p>
+                </div>
+            </div>
+            <div class="strength-badge-row">
+                <span class="strength-badge"><i class="fas fa-check-circle"></i> 抖音运营</span>
+                <span class="strength-badge"><i class="fas fa-check-circle"></i> 美团运营</span>
+                <span class="strength-badge"><i class="fas fa-check-circle"></i> 大众点评运营</span>
+                <span class="strength-badge"><i class="fas fa-check-circle"></i> 全案代运营</span>
+            </div>
+        </div>
+
+        <!-- ==================== 报价区：推广运营官方内部价 ==================== -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-label">💰 透明报价</span>
+                <h2 class="section-title">推广运营 · 官方内部价</h2>
+                <p class="section-subtitle">长期合作更优惠，所有价格公开透明，无隐形消费</p>
+            </div>
+            <div class="pricing-grid">
+                <!-- 抖音粉丝 & 基础互动 -->
+                <div class="price-card">
+                    <div class="price-card-header">
+                        <i class="fab fa-tiktok"></i>
+                        <h4>抖音粉丝 & 基础互动</h4>
+                    </div>
+                    <div class="price-card-body">
+                        <div class="price-row"><span class="item-name">高级粉</span><span class="item-price">0.5元/个</span></div>
+                        <div class="price-row"><span class="item-name">普通粉</span><span class="item-price">0.3元/个</span></div>
+                        <div class="price-row"><span class="item-name">作品点赞（普通）</span><span class="item-price">0.05元/个</span></div>
+                        <div class="price-row"><span class="item-name">作品点赞（热门）</span><span class="item-price">0.08元/个</span></div>
+                        <div class="price-row"><span class="item-name">分享</span><span class="item-price">0.01元/个</span></div>
+                        <div class="price-row"><span class="item-name">收藏</span><span class="item-price">0.05元/个</span></div>
+                    </div>
+                </div>
+                <!-- 抖音作品评论 -->
+                <div class="price-card">
+                    <div class="price-card-header">
+                        <i class="fas fa-comment-dots"></i>
+                        <h4>抖音作品评论 · 精细化</h4>
+                    </div>
+                    <div class="price-card-body">
+                        <div class="price-row"><span class="item-name">随机评论/纯表情</span><span class="item-price">0.8元/条</span></div>
+                        <div class="price-row"><span class="item-name">围绕作品评论</span><span class="item-price">1.0元/条</span></div>
+                        <div class="price-row"><span class="item-name">自定义评论</span><span class="item-price">1.5元/条</span></div>
+                        <div class="price-row"><span class="item-name">购物车评论</span><span class="item-price">1.0元/条</span></div>
+                        <div class="price-row"><span class="item-name">购物车自定义</span><span class="item-price">1.2元/条</span></div>
+                        <div class="price-row"><span class="item-name">小黄车围绕评论</span><span class="item-price">1.5元/条</span></div>
+                    </div>
+                </div>
+                <!-- 抖音直播人气 -->
+                <div class="price-card">
+                    <div class="price-card-header">
+                        <i class="fas fa-video"></i>
+                        <h4>抖音直播人气</h4>
+                    </div>
+                    <div class="price-card-body">
+                        <div class="price-row"><span class="item-name">🎤 娱乐·不上榜人气</span><span class="item-price">32元/小时</span></div>
+                        <div class="price-row"><span class="item-name">娱乐·上榜人气(高质量)</span><span class="item-price">1.2元/人/小时</span></div>
+                        <div class="price-row"><span class="item-name">娱乐·上榜+灯牌(高质量)</span><span class="item-price">2.5元/人/小时</span></div>
+                        <div class="price-row"><span class="item-name">娱乐·高质量加团</span><span class="item-price">19元/小时</span></div>
+                        <div class="price-row"><span class="item-name">🛒 带货直播·上榜人气</span><span class="item-price">11元/小时</span></div>
+                    </div>
+                </div>
+            </div>
+            <p class="price-note" style="margin-top:18px;">
+                <i class="fas fa-info-circle"></i> 另支持：快手 · 视频号 · 公众号 · 小红书 · 微博 · 头条 · B站等全平台业务，详询业务经理
+            </p>
+        </div>
+
+        <!-- ==================== CTA咨询入口区：多联系人建联 ==================== -->
+        <div class="cta-section" id="contactSection">
+            <h2 class="cta-title">📞 立即咨询，获取专属方案</h2>
+            <p class="cta-subtitle">多位业务经理在线，选择一位直接建联，免费诊断你的店铺问题</p>
+
+            <!-- 联系人详情卡片容器 -->
+            <div id="contactCards">
+                <!-- 动态生成JS填充 -->
+            </div>
+
+            <!-- 快捷操作按钮 -->
+            <div class="cta-quick-btns">
+                <a class="btn-cta btn-cta-gold" id="btnPrimaryContact" href="javascript:void(0);" onclick="handlePrimaryCTA()">
+                    <i class="fas fa-headset"></i> 立即咨询合作
+                </a>
+            </div>
+        </div>
+
+        <!-- ==================== 底部 ==================== -->
+        <div class="footer-bar">
+            <span><i class="fas fa-check-circle"></i> 抖音·美团官方合作服务商</span>
+            <span><i class="fas fa-check-circle"></i> 所有业务合规运营</span>
+            <span><i class="fas fa-check-circle"></i> 按效果付费·有订单/客资再收费</span>
+            <span><i class="fas fa-check-circle"></i> 长期合作更优惠</span>
+        </div>
+    </div>
+
+    <script>
+        // ==================== 联系人配置（修改这里即可切换不同业务人员的联系方式） ====================
+        const contactConfig = [
+            {
+                name: '见顾问',
+                description: '5年本地生活运营经验，擅长餐饮、美业类目，已帮助500+商家实现流量增长',
+                phone: '15675588947',
+                wechat: 'Tuan2469',
+                qrcodeImg: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=standard%20WeChat%20QR%20code%20with%20purple%20corner%20markers%20and%20WeChat%20logo%20in%20center%20with%20text%20%22%E6%89%AB%E4%B8%80%E6%89%AB%E4%B8%8A%E9%9D%A2%E7%9A%84%E4%BA%8C%E7%BB%B4%E7%A0%81%EF%BC%8C%E5%8A%A0%E6%88%91%E4%B8%BA%E6%9C%8B%E5%8F%8B%22%20at%20bottom&image_size=square'
+            },
+            {
+                name: '李顾问',
+                role: '运营专家 · 负责休闲娱乐板块',
+                description: '3年抖音美团运营经验，专注休闲娱乐类目，擅长账号运营和流量增长',
+                phone: '13900009999',
+                wechat: 'li999',
+                email: 'li@example.com',
+                qrcodeImg: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=WeChat%20QR%20code%20for%20business%20contact%202&image_size=square'
+            },
+            {
+                name: '王客服',
+                role: '售后专员 · 负责客户服务',
+                description: '2年客户服务经验，专业解决各类运营问题，为客户提供全方位支持',
+                phone: '13700007777',
+                wechat: 'wang777',
+                email: 'wang@example.com',
+                qrcodeImg: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=WeChat%20QR%20code%20for%20business%20contact%203&image_size=square'
+            }
+        ];
+
+        // ==================== 初始化联系人卡片 ====================
+        let activeContactIndex = 0;
+
+        function getContactIndexFromURL() {
+            // 不读取URL参数，始终返回0，避免URL中出现contact参数
+            return 0;
+        }
+
+        function renderContactCards() {
+            const container = document.getElementById('contactCards');
+            container.innerHTML = '';
+            contactConfig.forEach((contact, index) => {
+                const card = document.createElement('div');
+                card.className = 'contact-detail-card' + (index === activeContactIndex ? ' active' : '');
+                card.setAttribute('data-contact', index);
+                card.innerHTML = `
+                        <div class="contact-avatar">${contact.name.charAt(0)}</div>
+                        <h3>${contact.name}</h3>
+                        <p style="color:rgba(255,255,255,0.7);font-size:0.85rem;margin-bottom:12px;">${contact.description}</p>
+                        <div class="contact-info-row">
+                            <i class="fas fa-phone"></i>
+                            <span>${contact.phone}</span>
+                            <button class="copy-btn" onclick="copyText('${contact.phone}', this)" title="复制电话">📋 复制</button>
+                        </div>
+                        <div class="contact-info-row">
+                            <i class="fab fa-weixin"></i>
+                            <span>微信：${contact.wechat}</span>
+                            <button class="copy-btn" onclick="copyText('${contact.wechat}', this)" title="复制微信号">📋 复制</button>
+                        </div>
+                        <img class="qrcode-img" src="./qrcode/your-qrcode.png" alt="${contact.name}微信二维码" onerror="this.alt='二维码图片未找到';this.style.border='1px dashed #ccc';">
+                    `;
+                container.appendChild(card);
+            });
+        }
+
+        function switchContact(index) {
+            activeContactIndex = index;
+            // 更新卡片显示
+            document.querySelectorAll('.contact-detail-card').forEach(card => {
+                card.classList.toggle('active', parseInt(card.getAttribute('data-contact')) === index);
+            });
+        }
+
+        function handlePrimaryCTA() {
+            const contact = contactConfig[activeContactIndex];
+            // 优先尝试拨打电话（移动端），PC端则展示微信
+            if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+                window.location.href = 'tel:' + contact.phone;
+            } else {
+                // PC端：复制微信号并提示
+                copyText(contact.wechat, null);
+                showToast('已复制微信号：' + contact.wechat + '，请打开微信添加');
+            }
+            // 滚动到当前联系人卡片
+            const activeCard = document.querySelector('.contact-detail-card.active');
+            if (activeCard) {
+                activeCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            // 高亮闪烁效果
+            if (activeCard) {
+                activeCard.style.boxShadow = '0 0 0 4px rgba(201,160,58,0.6)';
+                setTimeout(() => {
+                    activeCard.style.boxShadow = '';
+                }, 800);
+            }
+        }
+
+        function copyText(text, btn) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showToast('已复制：' + text);
+                    if (btn) {
+                        btn.textContent = '✓ 已复制';
+                        btn.style.background = '#10b981';
+                        setTimeout(() => {
+                            btn.textContent = '📋 复制';
+                            btn.style.background = '';
+                        }, 1500);
+                    }
+                }).catch(() => {
+                    fallbackCopy(text, btn);
+                });
+            } else {
+                fallbackCopy(text, btn);
+            }
+        }
+
+        function fallbackCopy(text, btn) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            textarea.style.fontSize = '16px'; // 防止iOS缩放
+            textarea.contentEditable = true;
+            textarea.readOnly = false;
+            document.body.appendChild(textarea);
+            // iOS需要rang支持
+            if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
+                const range = document.createRange();
+                range.selectNodeContents(textarea);
+                const selection = window.getSelection();
+                selection.removeAllRanges();
+                selection.addRange(range);
+                textarea.setSelectionRange(0, 999);
+            } else {
+                textarea.select();
+            }
+            try {
+                document.execCommand('copy');
+                showToast('已复制：' + text);
+                if (btn) {
+                    btn.textContent = '✓ 已复制';
+                    btn.style.background = '#10b981';
+                    setTimeout(() => {
+                        btn.textContent = '📋 复制';
+                        btn.style.background = '';
+                    }, 1500);
+                }
+            } catch (e) {
+                showToast('请长按手动复制');
+            }
+            document.body.removeChild(textarea);
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.add('show');
+            clearTimeout(toast._timeout);
+            toast._timeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+
+        // ==================== 事件绑定 ====================
+        document.addEventListener('DOMContentLoaded', () => {
+            activeContactIndex = getContactIndexFromURL();
+            renderContactCards();
+            switchContact(activeContactIndex);
+        });
+    </script>
+</body>
+</html>
